@@ -2,33 +2,17 @@
 
 ## Ejemplo
 
-Usar sequelize para actualizar registros.
+Usar sequelize para crear relaciones entre modelos
 
 Pasos:
 
-1. Iniciar yarn `yarn init`.
-2. Instalar sequelize `yarn add sequelize`.
-3. Instalar sqlite3 `yarn add sqlite3`.
-4. Correr `node index.js`
-
-Un poco de teoría y análisis:
-
-* http://docs.sequelizejs.com/
-* https://www.sqlite.org/index.html
-* https://www.pluralsight.com/courses/code-school-try-sql
+1. Correr `node index.js`
+2. Copy/paste de partes del código index.js.
 
 ## Ejercicio
 
-1. Agrega un atributo score de tipo flotante al modelo película
-2. Agrega la película 
-
-Requisitos:
-
-1. Usar como punto de entrada o "main" `app.js` en lugar de `index.js`
-2. Cambiar el nombre del template de `index.ejs` a `moviex.ejs`
-3. Hacer `console.log("Rendering Moviex Home")` en cada llamada a `GET /`
+1. Agrega un modelo Director y relacionalo con las películas. Asigna los directores "Anthony Russo" y "Joe Russo" a "The Avengers"
 
 ## Más información:
 
-* https://yarnpkg.com/es-ES/docs/cli/run
-* http://expressjs.com/
+* http://docs.sequelizejs.com/manual/tutorial/associations.html
