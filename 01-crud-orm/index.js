@@ -15,10 +15,20 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 	// logging: false,
 });
 
+// Connect to DB
+sequelize
+  .authenticate()
+    .then(() => {
+      console.log(chalk.blue('Connection has been established successfully.'));
+    })
+  .catch(err => {
+    console.error(chalk.red('Unable to connect to the database:', err));
+  });
+
 const Movie = sequelize.define('movie', {
   name: { type: Sequelize.STRING },
   description: { type: Sequelize.STRING },
-  active: { type: Sequelize.BOOLEAN }
+  active: { type: Sequelize.BOOLEAN },
 });
 
 // Sync your model
@@ -30,7 +40,7 @@ Movie.sync().then(() => {
 Movie.create({
   name: 'Avengers',
   description: 'The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.',
-  active: true
+  active: true,
 }).then(() => console.log(chalk.blue("Avengers created!")));
 
 // Two movies!
@@ -72,13 +82,13 @@ Movie.findAll().then(movies => {
 
 // Update register
 anotherMovie.name = 'Jurassic World The end please';
-movie.save().then(() =>
-  console.log(chalk.blue(movie.get('name'));
+anotherMovie.save().then(() =>
+  console.log(chalk.blue(anotherMovie.get('name'))
 ));
 
 Movie.findAll().then(movies => {
   movies.forEach(movie => {
-    console.log(chalk.blue(movie.name)) // Jurassic World on the list!
+    console.log(chalk.blue(movie.name)) // Jurassic World on the list with new name!
   })
 });
 
@@ -88,30 +98,42 @@ anotherMovie.update({name2: 'Name2 does not exist'}).
   catch(() => console.log(chalk.red('should be error!')));
 
 // Destroy movie
-anotherMovie.destroy().console.log(chalk.blue("Jurassic World destroyed!"));
+anotherMovie.destroy().then(() => console.log(chalk.blue("Jurassic World destroyed!")));
 
 Movie.findAll().then(movies => {
   movies.forEach(movie => {
-    console.log(chalk.blue(movie.get('name')); // No Jurassic World again :(
+    console.log(chalk.blue(movie.get('name'))); // No Jurassic World again :(
   })
 });
 
 // Find All by certain attributes
-movie.findAll({
+Movie.findAll({
   where: {
     active: true
   }
 }).then(movies => {
-  movies.foreach(movie => {
-    console.log(movie.name) 
+  movies.forEach(movie => {
+    console.log(chalk.blue(movie.name))
+  })
+});
+
+Movie.findAll({
+  where: {
+    name: {
+        [Sequelize.Op.like]: "Ave%"
+    }
+  }
+}).then(movies => {
+  movies.forEach(movie => {
+    console.log(chalk.blue(movie.name))
   })
 });
 
 // Find One
-movie.findOne({
+Movie.findOne({
   where: {
     name: 'Avengers'
   }
 }).then(movie => {
-  console.log(movie.name) 
+  console.log(chalk.blue(movie.name))
 });

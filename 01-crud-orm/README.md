@@ -8,8 +8,9 @@ Pasos:
 
 1. Instalar sequelize `npm install sequelize`.
 2. Instalar sqlite3 `npm install sqlite3`.
-3. Abrir consola `node`.
-4. Copy/paste de partes del código index.js.
+3. Instalar chalk `npm install chalk`, si quieres colores en el output.
+4. Abrir consola `node`.
+5. Copy/paste de partes del código index.js.
 
 Mas información:
 
