@@ -6,7 +6,7 @@ Usar sequelize para crear relaciones entre modelos
 
 Pasos:
 
-1. Correr `node index.js`
+1. Correr `node`
 2. Copy/paste de partes del código index.js.
 
 ## Ejercicio
