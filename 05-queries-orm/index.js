@@ -14,7 +14,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
     idle: 10000
   },
 
-  logging: false
+  // logging: false
 });
 
 const Movie = sequelize.define('movie', {
@@ -26,7 +26,7 @@ const Movie = sequelize.define('movie', {
     good: {
       where: {
         score: {
-          [Sequelize.Op.gt]: 4
+          [Sequelize.Op.lte]: 4
         }
       }
     },
@@ -40,7 +40,7 @@ const loadMovies = () => {
   let movies = [];
 
   return new Promise((resolve, reject) => {
-   fs.createReadStream("05-queries-orm/movies.csv")
+   fs.createReadStream("movies.csv")
       .pipe(csv({ headers: true }))
       .on("data", function(data){
         movies.push(data)
@@ -88,6 +88,7 @@ const top3MovieNames = () => {
 const rawMovieNamesAndScores = () => {
   return sequelize.query("SELECT name, score FROM movies").then(result => {
     const [rows, statement] = result;
+
     console.log("---------- Raw Data ---------");
     rows.forEach(row => console.log("name: " + row.name + ", score: " + row.score));
     console.log(statement);
@@ -126,8 +127,3 @@ Movie.sync()
   .then(goodMovieNames)
   .then(goodMovieNamesByNameDesc)
   .catch(somethingWentWrong)
-
-// Should it be?
-// Movie.hasOne(Character, { as: "MainCharacter"});
-//
-// Create in one moment everyhing!
