@@ -12,3 +12,7 @@ Pasos:
 4. Correr `node_modules/.bin/sequelize db:migrate`.
 5. Correr `node_modules/.bin/sequelize db:seed:all`.
 6. Correr `npm start`.
+
+## Ejercicios
+
+1. Agregar un CRUD de películas.
