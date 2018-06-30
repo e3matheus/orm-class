@@ -1,8 +1,8 @@
-# Callbacks ORM
+# Migrations ORM
 
 ## Ejemplo
 
-Usar sequelize para ejecutar código después de que se actualice cada registro
+Usar sequelize para crear migraciones
 
 Pasos:
 
