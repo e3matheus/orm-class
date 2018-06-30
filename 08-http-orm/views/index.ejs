@@ -1,0 +1,19 @@
+<h3>Cartelera</h3>
+<p>Estas son las películas disponibles.</p>
+
+<table class="movies">
+  <thead>
+    <tr>
+      <th>Película</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% movies.forEach((movie) => { %>
+      <tr>
+        <td class="movie">
+          <a href="#"><%= movie.name %></a>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>

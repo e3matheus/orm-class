@@ -1,0 +1,31 @@
+body {
+  font-family: sans-serif;
+}
+
+.movies {
+  border-collapse: collapse;
+}
+
+.movies td,
+.movies th {
+  padding: 10px;
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+.movies td:first-child,
+.movies th:first-child {
+  text-align: left;
+}
+
+.movie {
+  margin-bottom: 5px;
+  height: 45px;
+  line-height: 45px;
+}
+
+.movie > img {
+  width: 30px;
+  height: 45px;
+  vertical-align: middle;
+}
